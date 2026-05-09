@@ -921,7 +921,7 @@
         <div class="result-numbers" id="result-numbers"></div>
         <div class="result-message" id="result-message"></div>
         <div class="result-cta">
-          <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" style="margin-top:24px;display:inline-block;">Get it on Amazon — Free for HR Leaders</a>
+          <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" style="margin-top:24px;display:inline-block;">Get it on Amazon</a>
         </div>
       </div>
     </div>
@@ -1058,15 +1058,14 @@
 
     const WEEK = 168;
     const sleepWeek = sleep * 7;
-    const workdays = work > 40 ? Math.min(6, 5 + Math.round((work - 40) / 8)) : 5;
-    const commuteWeek = commute * workdays;
+    const commuteWeek = commute * 5;
     const commuteYearly = Math.round(commuteWeek * 52);
 
     // Ideal baseline: 8hrs sleep/night, 0.5hrs commute/day, 40hrs work/week
     // Anything ABOVE ideal = bandwidth tax on that dimension
     // Sleep deficit tax: less than 8hrs = losing restoration
-    const sleepDeficit = Math.max(0, 8 - sleep) * 7;         // hours lost vs ideal sleep
-    const commuteTax = Math.max(0, commute - 0.5) * workdays; // hours lost above 30min/day
+    const sleepDeficit = Math.max(0, 7 - sleep) * 5;         // hours lost vs ideal sleep
+    const commuteTax = commute * 5; // hours lost above 30min/day
     const workTax = Math.max(0, work - 40);                   // hours above 40hr week
 
     // Total bandwidth tax score
