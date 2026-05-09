@@ -873,8 +873,8 @@
             How many hours of sleep do you get on average per night?
           </label>
           <div class="calc-slider-wrap">
-            <input type="range" min="3" max="10" value="6" step="0.5" class="calc-slider" id="sleep">
-            <div class="calc-slider-value"><span id="sleep-val">6</span> hrs</div>
+            <input type="range" min="3" max="10" value="8" step="0.5" class="calc-slider" id="sleep">
+            <div class="calc-slider-value"><span id="sleep-val">8</span> hrs</div>
           </div>
           <div class="calc-hint">Recommended: 7–9 hours. Most urban workers get 5–6.</div>
         </div>
@@ -885,8 +885,8 @@
             How many hours do you spend commuting per day, on average?
           </label>
           <div class="calc-slider-wrap">
-            <input type="range" min="0" max="6" value="2" step="0.5" class="calc-slider" id="commute">
-            <div class="calc-slider-value"><span id="commute-val">2</span> hrs</div>
+            <input type="range" min="0" max="6" value="0.5" step="0.5" class="calc-slider" id="commute">
+            <div class="calc-slider-value"><span id="commute-val">0.5</span> hrs</div>
           </div>
           <div class="calc-hint">Include both directions. Metro Manila average: 2–4 hours.</div>
         </div>
@@ -897,8 +897,8 @@
             How many hours do you work per week? <span style="opacity:0.6;font-size:12px;">(include weekends if applicable)</span>
           </label>
           <div class="calc-slider-wrap">
-            <input type="range" min="20" max="90" value="48" step="1" class="calc-slider" id="work">
-            <div class="calc-slider-value"><span id="work-val">48</span> hrs</div>
+            <input type="range" min="20" max="90" value="40" step="1" class="calc-slider" id="work">
+            <div class="calc-slider-value"><span id="work-val">40</span> hrs</div>
           </div>
           <div class="calc-hint">Standard full-time = 40 hrs. Many knowledge workers report 50–60+.</div>
         </div>
@@ -1058,40 +1058,47 @@
 
     const WEEK = 168;
     const sleepWeek = sleep * 7;
-    // Commute on workdays (5 days), unless work > 40hrs suggesting weekend work — scale slightly
     const workdays = work > 40 ? Math.min(6, 5 + Math.round((work - 40) / 8)) : 5;
     const commuteWeek = commute * workdays;
-    const remaining = WEEK - sleepWeek - commuteWeek - work;
+    const commuteYearly = Math.round(commuteWeek * 52);
 
-    // Baseline: 35hrs free time/week = healthy (5hrs/day for meals, self-care, life)
-    // Deficit < 21hrs | Getting By 21–35 | Reserves > 35
-    const HEALTHY = 35;
-    const CRITICAL = 21;
+    // Ideal baseline: 8hrs sleep/night, 0.5hrs commute/day, 40hrs work/week
+    // Anything ABOVE ideal = bandwidth tax on that dimension
+    // Sleep deficit tax: less than 8hrs = losing restoration
+    const sleepDeficit = Math.max(0, 8 - sleep) * 7;         // hours lost vs ideal sleep
+    const commuteTax = Math.max(0, commute - 0.5) * workdays; // hours lost above 30min/day
+    const workTax = Math.max(0, work - 40);                   // hours above 40hr week
+
+    // Total bandwidth tax score
+    const totalTax = sleepDeficit + commuteTax + workTax;
+
+    // Thresholds — strict per Mai's spec:
+    // Reserves: very little deviation from ideal (tax < 5hrs)
+    // Getting by: moderate tax (5–15hrs)
+    // Running on empty: heavy tax (>15hrs)
+    const RESERVE_LIMIT = 5;
+    const EMPTY_THRESHOLD = 15;
 
     let status, color, gaugeColor, gaugeWidth, message;
 
-    const commuteTax = commuteWeek;
-    const commuteDays = Math.round(commuteTax / commute);
-    const commuteYearly = Math.round(commuteTax * 52);
-
-    if (remaining < CRITICAL) {
+    if (totalTax > EMPTY_THRESHOLD) {
       status = "You are running on empty.";
       color = "#c0392b";
       gaugeColor = "linear-gradient(to right, #e74c3c, #c0392b)";
-      gaugeWidth = Math.max(5, Math.round((remaining / HEALTHY) * 33));
-      message = `<strong>This is not sustainable — and it is not your fault.</strong> After sleep, commuting, and work, you have roughly <strong>${Math.round(remaining)} hours</strong> left each week for everything else: meals, family, rest, thinking, being human. That is less than <strong>3 hours a day</strong>. You are not underperforming. You are overtaxed. The commute alone is consuming <strong>${Math.round(commuteWeek)} hours a week</strong> — that is <strong>${Math.round(commuteYearly)} hours a year</strong>, time that no transit project will give back anytime soon. <em>Unstuck</em> was written for exactly this situation. The fix does not start with government. It starts with the policy decisions your organization makes right now.`;
-    } else if (remaining <= HEALTHY) {
+      gaugeWidth = Math.max(5, Math.round(33 - ((totalTax - EMPTY_THRESHOLD) / 20) * 28));
+      message = `<strong>This is not sustainable — and it is not your fault.</strong> After sleep, commuting, and work, you have roughly <strong>${Math.round(WEEK - sleepWeek - commuteWeek - work)} hours</strong> left each week for everything else: meals, family, rest, thinking, being human. You are carrying a bandwidth tax of <strong>${Math.round(totalTax)} hours a week</strong> above what is considered a healthy baseline. The commute alone is consuming <strong>${Math.round(commuteWeek)} hours a week</strong> — that is <strong>${commuteYearly.toLocaleString()} hours a year</strong>, time that no transit project will give back anytime soon. <em>Unstuck</em> was written for exactly this situation. The fix does not start with government. It starts with the policy decisions your organization makes right now.`;
+    } else if (totalTax >= RESERVE_LIMIT) {
       status = "You are getting by — but barely.";
       color = "#e67e22";
       gaugeColor = "linear-gradient(to right, #f39c12, #e67e22)";
-      gaugeWidth = Math.round(33 + ((remaining - CRITICAL) / (HEALTHY - CRITICAL)) * 34);
-      message = `<strong>You are functional — but fragile.</strong> You have about <strong>${Math.round(remaining)} hours</strong> of free time each week, which sounds like enough until you account for groceries, rest, relationships, and the basic admin of being alive. Your commute is taxing you <strong>${Math.round(commuteWeek)} hours every week</strong> — <strong>${Math.round(commuteYearly)} hours a year</strong>. You have not hit a wall yet, but you are close enough to feel it on Friday afternoons. Many people in this zone mistake exhaustion for personal weakness. It is not. It is a systems problem. <em>Unstuck</em> makes the case that your organization has the power — and the responsibility — to change this.`;
+      gaugeWidth = Math.round(33 + ((EMPTY_THRESHOLD - totalTax) / (EMPTY_THRESHOLD - RESERVE_LIMIT)) * 34);
+      message = `<strong>You are functional — but fragile.</strong> You are carrying a bandwidth tax of <strong>${Math.round(totalTax)} hours a week</strong> above the healthy baseline of 8 hours of sleep, a 30-minute commute, and a 40-hour work week. Your commute is taxing you <strong>${Math.round(commuteWeek)} hours every week</strong> — <strong>${commuteYearly.toLocaleString()} hours a year</strong>. You have not hit a wall yet, but you are close enough to feel it on Friday afternoons. Many people in this zone mistake exhaustion for personal weakness. It is not. It is a systems problem. <em>Unstuck</em> makes the case that your organization has the power — and the responsibility — to change this.`;
     } else {
       status = "You have bandwidth reserves.";
       color = "#586536";
       gaugeColor = "linear-gradient(to right, #B0C477, #586536)";
-      gaugeWidth = Math.min(100, Math.round(67 + ((remaining - HEALTHY) / HEALTHY) * 33));
-      message = `<strong>You are one of the fortunate ones — hold onto this.</strong> With <strong>${Math.round(remaining)} hours</strong> of free time each week, you have enough room to think, recover, and do work that actually matters. But your commute is still costing you <strong>${Math.round(commuteWeek)} hours a week</strong> — <strong>${Math.round(commuteYearly)} hours a year</strong>. For many of the people you work with, or manage, the numbers look very different. <em>Unstuck</em> is less about your own survival and more about what you can do — as a leader, a colleague, a policy-maker — for everyone around you who is running on empty.`;
+      gaugeWidth = Math.min(100, Math.round(67 + ((RESERVE_LIMIT - totalTax) / RESERVE_LIMIT) * 33));
+      message = `<strong>You are one of the fortunate ones — hold onto this.</strong> Your bandwidth tax is only <strong>${Math.round(totalTax)} hours a week</strong> above the ideal baseline, which means you have genuine room to think, recover, and do work that actually matters. But your commute is still costing you <strong>${Math.round(commuteWeek)} hours a week</strong> — <strong>${commuteYearly.toLocaleString()} hours a year</strong>. For many of the people you work with, or manage, the numbers look very different. <em>Unstuck</em> is less about your own survival and more about what you can do — as a leader, a colleague, a policy-maker — for everyone around you who is running on empty.`;
     }
 
     // Render result
@@ -1101,20 +1108,20 @@
 
     document.getElementById('result-numbers').innerHTML = `
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(remaining)}</span>
-        <span class="result-stat-label">Free hrs/week</span>
+        <span class="result-stat-num">${Math.round(totalTax)}</span>
+        <span class="result-stat-label">Bandwidth Tax hrs/week</span>
       </div>
       <div class="result-stat">
         <span class="result-stat-num">${Math.round(commuteWeek)}</span>
         <span class="result-stat-label">Commute hrs/week</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num" style="font-size:24px">${Math.round(commuteYearly).toLocaleString()}</span>
+        <span class="result-stat-num" style="font-size:24px">${commuteYearly.toLocaleString()}</span>
         <span class="result-stat-label">Commute hrs/year</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(remaining / 7 * 10) / 10}</span>
-        <span class="result-stat-label">Free hrs/day</span>
+        <span class="result-stat-num">${Math.round(WEEK - sleepWeek - commuteWeek - work)}</span>
+        <span class="result-stat-label">Free hrs/week</span>
       </div>
     `;
 
