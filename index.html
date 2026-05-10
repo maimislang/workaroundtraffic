@@ -771,6 +771,124 @@
     .result-numbers { gap: 16px; }
   }
 
+  /* ── FREE TOOLS SECTION ── */
+  .free-tools {
+    background: #ffffff;
+    padding: 100px 60px;
+    border-top: 1px solid rgba(88,101,54,0.1);
+  }
+
+  .free-tools-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .free-tools-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .free-tools-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(26px, 3.5vw, 40px);
+    color: var(--dark);
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .free-tools-title em {
+    font-style: italic;
+    color: var(--mid);
+  }
+
+  .free-tools-sub {
+    font-size: 15px;
+    color: #6a6a5a;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto 56px;
+  }
+
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  .tool-card {
+    border: 2px solid #F5C842;
+    padding: 40px 32px;
+    text-align: left;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: white;
+  }
+
+  .tool-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(245,200,66,0.2);
+  }
+
+  .tool-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b8860b;
+    background: #FFF8DC;
+    padding: 4px 10px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+
+  .tool-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--dark);
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .tool-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #6a6a5a;
+    margin-bottom: 24px;
+  }
+
+  .btn-yellow {
+    background: #F5C842;
+    color: var(--dark);
+    padding: 14px 28px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-yellow:hover {
+    background: #e6b800;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .free-tools { padding: 80px 32px; }
+    .tools-grid { grid-template-columns: 1fr; }
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -814,7 +932,7 @@
     <p style="font-family:'DM Sans',sans-serif;font-size:clamp(13px,1.1vw,15px);font-weight:400;color:var(--lime);letter-spacing:0.5px;margin-bottom:0;opacity:0;animation:fadeUp 0.8s ease 0.55s forwards;">How To Work Around Traffic When Government Won't Really Help</p>
     <p class="hero-subtitle">Metro Manila's traffic problem is not just a government failure. It is a corporate one. This book shows what organizations can actually do — right now.</p>
     <div class="hero-cta">
-      <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank">Get it on Amazon</a>
+      <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" onclick="gtag('event', 'amazon_click', {'event_category': 'conversion', 'event_label': 'hero_button'});">Get it on Amazon</a>
       <a href="#get-book" class="btn-secondary">Learn More</a>
     </div>
   </div>
@@ -911,7 +1029,7 @@
           <div class="calc-hint">Standard full-time = 40 hrs. Many knowledge workers report 50–60+.</div>
         </div>
 
-        <button class="calc-btn" id="calc-submit">Calculate My Bandwidth Tax</button>
+        <button class="calc-btn" id="calc-submit" onclick="gtag('event', 'calculator_use', {'event_category': 'engagement', 'event_label': 'bandwidth_tax_calculator'});">Calculate My Bandwidth Tax</button>
       </div>
 
       <div class="calc-result" id="calc-result">
@@ -929,7 +1047,7 @@
         <div class="result-numbers" id="result-numbers"></div>
         <div class="result-message" id="result-message"></div>
         <div class="result-cta">
-          <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" style="margin-top:24px;display:inline-block;">Get it on Amazon</a>
+          <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" style="margin-top:24px;display:inline-block;" onclick="gtag('event', 'amazon_click', {'event_category': 'conversion', 'event_label': 'calculator_result'});">Get it on Amazon</a>
         </div>
       </div>
     </div>
@@ -1000,8 +1118,33 @@
   <h2 class="get-book-title">Read it. <em>Share it.</em> Change the status quo.</h2>
   <p class="get-book-sub">The Kindle edition is available now on Amazon. This book is free to students and media contacts.</p>
   <div class="get-book-buttons">
-    <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank">Get it on Amazon</a>
+    <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" onclick="gtag('event', 'amazon_click', {'event_category': 'conversion', 'event_label': 'get_book_section'});">Get it on Amazon</a>
     <a href="mailto:maimislang@gmail.com?subject=Media%20Copy%20Request%20—%20Unstuck" class="btn-secondary">Request a Media Copy</a>
+  </div>
+</section>
+
+<!-- FREE TOOLS -->
+<section class="free-tools" id="free-tools">
+  <div class="free-tools-inner">
+    <div class="reveal">
+      <p class="free-tools-eyebrow">Free Tools</p>
+      <h2 class="free-tools-title">Traffic does not only exist <em>on the road.</em></h2>
+      <p class="free-tools-sub">Here are free tools to help you conserve your bandwidth — wherever the friction is.</p>
+    </div>
+    <div class="tools-grid reveal">
+      <div class="tool-card">
+        <span class="tool-tag">Tax Filing · Philippines</span>
+        <div class="tool-name">BetterBuwis</div>
+        <p class="tool-desc">A free Philippine tax filing simulator. Know exactly what you owe — or how much you should be getting back.</p>
+        <a href="https://betterbuwis.com" target="_blank" class="btn-yellow" onclick="gtag('event', 'tax_simulator_click', {'event_category': 'engagement', 'event_label': 'tools_section'});">Try It Free →</a>
+      </div>
+      <div class="tool-card">
+        <span class="tool-tag">AI Literacy · Coming Soon</span>
+        <div class="tool-name">AI Eloquent</div>
+        <p class="tool-desc">A free AI fluency test. Find out where you stand in an economy increasingly shaped by artificial intelligence — and what to do about it.</p>
+        <a href="#" class="btn-yellow" onclick="gtag('event', 'ai_fluency_click', {'event_category': 'engagement', 'event_label': 'tools_section'});" style="opacity:0.6;cursor:not-allowed;">Coming Soon</a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1012,7 +1155,7 @@
     <p class="newsletter-sub">Monthly short essays on alternative work arrangements and the systemic inefficiencies holding organizations back. No fluff.</p>
     <div class="email-row">
       <input type="email" class="email-input" placeholder="your@email.com">
-      <button class="email-btn">Subscribe</button>
+      <button class="email-btn" onclick="gtag('event', 'newsletter_signup', {'event_category': 'conversion', 'event_label': 'unstuck_newsletter'});">Subscribe</button>
     </div>
   </div>
 </section>
@@ -1021,9 +1164,9 @@
 <footer>
   <div class="footer-logo">UNSTUCK</div>
   <nav class="footer-links">
-    <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank">Get it on Amazon</a>
+    <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank">Buy the Book</a>
     <a href="#">Newsletter</a>
-    <a href="mailto:maimislang@gmail.com">Media Inquiries</a>
+    <a href="mailto:maimislang@gmail.com" onclick="gtag('event', 'media_inquiry', {'event_category': 'conversion', 'event_label': 'footer_media_link'});">Media Inquiries</a>
   </nav>
 </footer>
 
