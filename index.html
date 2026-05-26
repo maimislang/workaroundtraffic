@@ -4,15 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Unstuck: How To Work Around Traffic When Government Won't Really Help</title>
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4240159480378953" crossorigin="anonymous"></script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-F6GE5M65Z4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-F6GE5M65Z4');
-</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -273,8 +264,11 @@
   }
 
   .features-header {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
     margin-bottom: 80px;
+    align-items: end;
   }
 
   .features-title {
@@ -772,124 +766,6 @@
     .result-numbers { gap: 16px; }
   }
 
-  /* ── FREE TOOLS SECTION ── */
-  .free-tools {
-    background: #ffffff;
-    padding: 100px 60px;
-    border-top: 1px solid rgba(88,101,54,0.1);
-  }
-
-  .free-tools-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .free-tools-eyebrow {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--mid);
-    margin-bottom: 16px;
-  }
-
-  .free-tools-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(26px, 3.5vw, 40px);
-    color: var(--dark);
-    line-height: 1.3;
-    margin-bottom: 12px;
-  }
-
-  .free-tools-title em {
-    font-style: italic;
-    color: var(--mid);
-  }
-
-  .free-tools-sub {
-    font-size: 15px;
-    color: #6a6a5a;
-    line-height: 1.7;
-    max-width: 560px;
-    margin: 0 auto 56px;
-  }
-
-  .tools-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    max-width: 740px;
-    margin: 0 auto;
-  }
-
-  .tool-card {
-    border: 2px solid #F5C842;
-    padding: 40px 32px;
-    text-align: left;
-    transition: transform 0.2s, box-shadow 0.2s;
-    background: white;
-  }
-
-  .tool-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(245,200,66,0.2);
-  }
-
-  .tool-tag {
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #b8860b;
-    background: #FFF8DC;
-    padding: 4px 10px;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-
-  .tool-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 900;
-    color: var(--dark);
-    margin-bottom: 8px;
-    line-height: 1;
-  }
-
-  .tool-desc {
-    font-size: 13px;
-    line-height: 1.7;
-    color: #6a6a5a;
-    margin-bottom: 24px;
-  }
-
-  .btn-yellow {
-    background: #F5C842;
-    color: var(--dark);
-    padding: 14px 28px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    display: inline-block;
-  }
-
-  .btn-yellow:hover {
-    background: #e6b800;
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 900px) {
-    .free-tools { padding: 80px 32px; }
-    .tools-grid { grid-template-columns: 1fr; }
-  }
-
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -907,7 +783,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
+    .hero-right { min-height: 260px; }
     .hero-left { padding: 80px 32px; }
     .features { padding: 80px 32px; }
     .features-header { grid-template-columns: 1fr; }
@@ -922,6 +798,11 @@
 </style>
 </head>
 <body>
+<!-- JUNE 15 LAUNCH BANNER -->
+<div style="background:var(--lime);text-align:center;padding:12px 24px;position:sticky;top:0;z-index:1000;">
+  <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin:0;">📦 Paperback launching <strong>June 15, 2026</strong> on Amazon &nbsp;·&nbsp; <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank" style="color:var(--olive);text-decoration:underline;text-underline-offset:3px;">Get the Kindle now →</a></p>
+</div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -933,8 +814,8 @@
     <p style="font-family:'DM Sans',sans-serif;font-size:clamp(13px,1.1vw,15px);font-weight:400;color:var(--lime);letter-spacing:0.5px;margin-bottom:0;opacity:0;animation:fadeUp 0.8s ease 0.55s forwards;">How To Work Around Traffic When Government Won't Really Help</p>
     <p class="hero-subtitle">Metro Manila's traffic problem is not just a government failure. It is a corporate one. This book shows what organizations can actually do — right now.</p>
     <div class="hero-cta">
-      <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" onclick="gtag('event', 'amazon_click', {'event_category': 'conversion', 'event_label': 'hero_button'});">Get it on Amazon</a>
-      <a href="#features" class="btn-secondary">Learn More</a>
+      <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank">Get it on Amazon</a>
+      <a href="#get-book" class="btn-secondary">Learn More</a>
     </div>
   </div>
   <div class="hero-right">
@@ -952,34 +833,22 @@
 <div class="band">
   <div class="band-track">
     <span class="band-item">Alternative Work Arrangements</span><span class="band-dot">—</span>
-    <span class="band-item">Metro Manila Traffic</span><span class="band-dot">—</span>
+    <span class="band-item">Metro Manila</span><span class="band-dot">—</span>
+    <span class="band-item">The Corporate Policy Failure</span><span class="band-dot">—</span>
+    <span class="band-item">Organizations in Congested Cities</span><span class="band-dot">—</span>
+    <span class="band-item">Human Resources</span><span class="band-dot">—</span>
     <span class="band-item">Future of Work</span><span class="band-dot">—</span>
-    <span class="band-item">Bandwidth Tax</span><span class="band-dot">—</span>
-    <span class="band-item">Urban Design</span><span class="band-dot">—</span>
-    <span class="band-item">Transportation Policy</span><span class="band-dot">—</span>
-    <span class="band-item">Change Management</span><span class="band-dot">—</span>
-    <span class="band-item">Remote Work Policy</span><span class="band-dot">—</span>
-    <span class="band-item">Employee Productivity</span><span class="band-dot">—</span>
     <span class="band-item">Alternative Work Arrangements</span><span class="band-dot">—</span>
-    <span class="band-item">Metro Manila Traffic</span><span class="band-dot">—</span>
+    <span class="band-item">Metro Manila</span><span class="band-dot">—</span>
+    <span class="band-item">The Corporate Policy Failure</span><span class="band-dot">—</span>
+    <span class="band-item">Organizations in Congested Cities</span><span class="band-dot">—</span>
+    <span class="band-item">Human Resources</span><span class="band-dot">—</span>
     <span class="band-item">Future of Work</span><span class="band-dot">—</span>
-    <span class="band-item">Bandwidth Tax</span><span class="band-dot">—</span>
-    <span class="band-item">Urban Design</span><span class="band-dot">—</span>
-    <span class="band-item">Transportation Policy</span><span class="band-dot">—</span>
-    <span class="band-item">Change Management</span><span class="band-dot">—</span>
-    <span class="band-item">Remote Work Policy</span><span class="band-dot">—</span>
-    <span class="band-item">Employee Productivity</span><span class="band-dot">—</span>
   </div>
 </div>
 
-<!-- ADSENSE PLACEHOLDER - replace ca-pub-XXXXXXXXXXXXXXXX with your publisher ID -->
 <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 
-<!-- AD UNIT - TOP OF CALCULATOR SECTION -->
-<div style="text-align:center;padding:24px 0;background:var(--cream);border-top:1px solid rgba(88,101,54,0.1);">
-  <div style="display:inline-block;min-width:320px;min-height:50px;background:rgba(88,101,54,0.04);border:1px dashed rgba(88,101,54,0.2);padding:12px 24px;">
-    <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(88,101,54,0.3);font-family:'DM Sans',sans-serif;">Advertisement</span>
-  </div>
 </div>
 
 <!-- BANDWIDTH TAX CALCULATOR -->
@@ -1000,8 +869,8 @@
             How many hours of sleep do you get on average per night?
           </label>
           <div class="calc-slider-wrap">
-            <input type="range" min="3" max="10" value="8" step="0.5" class="calc-slider" id="sleep">
-            <div class="calc-slider-value"><span id="sleep-val">8</span> hrs</div>
+            <input type="range" min="3" max="10" value="6" step="0.5" class="calc-slider" id="sleep">
+            <div class="calc-slider-value"><span id="sleep-val">6</span> hrs</div>
           </div>
           <div class="calc-hint">Recommended: 7–9 hours. Most urban workers get 5–6.</div>
         </div>
@@ -1012,8 +881,8 @@
             How many hours do you spend commuting per day, on average?
           </label>
           <div class="calc-slider-wrap">
-            <input type="range" min="0" max="6" value="0.5" step="0.5" class="calc-slider" id="commute">
-            <div class="calc-slider-value"><span id="commute-val">0.5</span> hrs</div>
+            <input type="range" min="0" max="6" value="2" step="0.5" class="calc-slider" id="commute">
+            <div class="calc-slider-value"><span id="commute-val">2</span> hrs</div>
           </div>
           <div class="calc-hint">Include both directions. Metro Manila average: 2–4 hours.</div>
         </div>
@@ -1024,13 +893,13 @@
             How many hours do you work per week? <span style="opacity:0.6;font-size:12px;">(include weekends if applicable)</span>
           </label>
           <div class="calc-slider-wrap">
-            <input type="range" min="20" max="90" value="40" step="1" class="calc-slider" id="work">
-            <div class="calc-slider-value"><span id="work-val">40</span> hrs</div>
+            <input type="range" min="20" max="90" value="48" step="1" class="calc-slider" id="work">
+            <div class="calc-slider-value"><span id="work-val">48</span> hrs</div>
           </div>
           <div class="calc-hint">Standard full-time = 40 hrs. Many knowledge workers report 50–60+.</div>
         </div>
 
-        <button class="calc-btn" id="calc-submit" onclick="gtag('event', 'calculator_use', {'event_category': 'engagement', 'event_label': 'bandwidth_tax_calculator'});">Calculate My Bandwidth Tax</button>
+        <button class="calc-btn" id="calc-submit">Calculate My Bandwidth Tax</button>
       </div>
 
       <div class="calc-result" id="calc-result">
@@ -1048,45 +917,14 @@
         <div class="result-numbers" id="result-numbers"></div>
         <div class="result-message" id="result-message"></div>
         <div class="result-cta">
-          <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" style="margin-top:24px;display:inline-block;" onclick="gtag('event', 'amazon_click', {'event_category': 'conversion', 'event_label': 'calculator_result'});">Get it on Amazon</a>
+          <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" style="margin-top:24px;display:inline-block;">Get it on Amazon — Free for HR Leaders</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AD UNIT - BELOW CALCULATOR -->
-<div style="text-align:center;padding:24px 0;background:var(--cream);">
-  <div style="display:inline-block;min-width:320px;min-height:50px;background:rgba(88,101,54,0.04);border:1px dashed rgba(88,101,54,0.2);padding:12px 24px;">
-    <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(88,101,54,0.3);font-family:'DM Sans',sans-serif;">Advertisement</span>
-  </div>
 </div>
-
-<!-- FEATURES / WHAT THE BOOK DOES -->
-<section class="features" id="features">
-  <div class="features-inner">
-    <div class="features-header reveal" style="text-align:center;">
-      <h2 class="features-title">What the book does</h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card reveal">
-        <div class="feature-num">01</div>
-        <div class="feature-title">Reframes the problem</div>
-        <div class="feature-desc">Shows how commute suffering is a corporate policy choice, not an unavoidable civic condition, and why organizations bear responsibility for changing it.</div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">02</div>
-        <div class="feature-title">Covers all workers</div>
-        <div class="feature-desc">From knowledge workers to frontline staff and jeepney drivers — ensuring flexibility does not become another privilege of the already-privileged.</div>
-      </div>
-      <div class="feature-card reveal">
-        <div class="feature-num">03</div>
-        <div class="feature-title">Gives you the tools</div>
-        <div class="feature-desc">The physical book offers nine ready-to-use implementation guides and checklists for HR leaders and operations teams.</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- AUDIENCE -->
 <section class="audience">
@@ -1096,19 +934,19 @@
   </div>
   <div class="audience-grid">
     <div class="audience-card reveal">
-      <div class="audience-card-label">The C-Suite</div>
+      <div class="audience-card-label">HR & People Leaders</div>
+      <div class="audience-card-title">The policy changers</div>
+      <div class="audience-card-body">You have the mandate. This book gives you the language, the framework, and the data to make the case to leadership — and to design AWAs that actually work.</div>
+    </div>
+    <div class="audience-card reveal">
+      <div class="audience-card-label">C-Suite & Executives</div>
       <div class="audience-card-title">The decision makers</div>
       <div class="audience-card-body">Retention, productivity, talent acquisition — the commute problem is costing you. This book quantifies what inaction looks like and what acting now could look like instead.</div>
     </div>
     <div class="audience-card reveal">
-      <div class="audience-card-label">HR Leadership</div>
-      <div class="audience-card-title">The policy changers</div>
-      <div class="audience-card-body">You have the mandate. This book gives you the framework and the data to make the case to leadership — and to design AWAs that actually work.</div>
-    </div>
-    <div class="audience-card reveal">
       <div class="audience-card-label">Operations & Admin</div>
       <div class="audience-card-title">The implementers</div>
-      <div class="audience-card-body">Scheduling, coverage, equity across job roles — <em>Unstuck</em> does not skip the hard operational questions. It goes there with you.</div>
+      <div class="audience-card-body">Scheduling, coverage, equity across job roles — <em>Unstuck</em> doesn't skip the hard operational questions. It goes there with you.</div>
     </div>
   </div>
 </section>
@@ -1116,46 +954,22 @@
 <!-- GET THE BOOK -->
 <section class="get-book" id="get-book">
   <p class="get-book-label">Available now</p>
-  <h2 class="get-book-title">Read it. <em>Share it.</em> Change the status quo.</h2>
-  <p class="get-book-sub">The Kindle edition is available now on Amazon. This book is free to students and media contacts.</p>
+  <h2 class="get-book-title">Read it. <em>Share it.</em> Change the policy.</h2>
+  <p class="get-book-sub">The Kindle edition is live now on Amazon. The paperback — with nine appendices for HR leaders — launches <strong style="color:var(--lime);">June 15, 2026</strong>. Both offered free to media contacts and institutional buyers.</p>
   <div class="get-book-buttons">
-    <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank" onclick="gtag('event', 'amazon_click', {'event_category': 'conversion', 'event_label': 'get_book_section'});">Get it on Amazon</a>
-    <a href="mailto:maimislang@gmail.com?subject=Media%20Copy%20Request%20—%20Unstuck" class="btn-secondary">Request a Media Copy</a>
-  </div>
-</section>
-
-<!-- FREE TOOLS -->
-<section class="free-tools" id="free-tools">
-  <div class="free-tools-inner">
-    <div class="reveal">
-      <p class="free-tools-eyebrow">Free Tools</p>
-      <h2 class="free-tools-title">Traffic does not only exist <em>on the road.</em></h2>
-      <p class="free-tools-sub">Free tools to help you conserve your bandwidth wherever the friction is.</p>
-    </div>
-    <div class="tools-grid reveal">
-      <div class="tool-card">
-        <span class="tool-tag">Tax Filing · Philippines</span>
-        <div class="tool-name">BetterBuwis</div>
-        <p class="tool-desc">A free Philippine tax filing simulator. Know exactly what you owe — or how much you should be getting back.</p>
-        <a href="https://betterbuwis.com" target="_blank" class="btn-yellow" onclick="gtag('event', 'tax_simulator_click', {'event_category': 'engagement', 'event_label': 'tools_section'});">Try It Free →</a>
-      </div>
-      <div class="tool-card">
-        <span class="tool-tag">AI Literacy · Coming Soon</span>
-        <div class="tool-name">AI Eloquent</div>
-        <p class="tool-desc">A free AI fluency test. Find out where you stand in an economy increasingly shaped by artificial intelligence — and what to do about it.</p>
-        <a href="#" class="btn-yellow" onclick="gtag('event', 'ai_fluency_click', {'event_category': 'engagement', 'event_label': 'tools_section'});" style="opacity:0.6;cursor:not-allowed;">Coming Soon</a>
-      </div>
-    </div>
+    <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank">Get it on Amazon</a>
+    <a href="mailto:your@email.com?subject=Media%20Copy%20Request%20—%20Unstuck" class="btn-secondary">Request a Media Copy</a>
   </div>
 </section>
 
 <!-- NEWSLETTER -->
 <section class="newsletter">
   <div class="newsletter-inner reveal">
-    <h3 class="newsletter-title">The Bandwidth Conservator</h3>
-    <p class="newsletter-sub">Monthly short essays on working smarter in congested cities, doing your best thinking despite systemic friction, and reclaiming the hours that traffic quietly steals.</p>
+    <h3 class="newsletter-title">The <em>Unstuck</em> Newsletter</h3>
+    <p class="newsletter-sub">Weekly short essays on alternative work arrangements and the systemic inefficiencies holding organizations back. No fluff.</p>
     <div class="email-row">
-      <a href="https://maimislang.substack.com/subscribe" target="_blank" class="email-btn" style="display:block;width:100%;text-align:center;padding:16px;text-decoration:none;" onclick="gtag('event', 'newsletter_signup', {'event_category': 'conversion', 'event_label': 'unstuck_newsletter'});">Subscribe on Substack →</a>
+      <input type="email" class="email-input" placeholder="your@email.com">
+      <button class="email-btn">Subscribe</button>
     </div>
   </div>
 </section>
@@ -1164,9 +978,9 @@
 <footer>
   <div class="footer-logo">UNSTUCK</div>
   <nav class="footer-links">
-    <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank">Buy the Book</a>
-    <a href="https://maimislang.substack.com/subscribe" target="_blank">Newsletter</a>
-    <a href="mailto:maimislang@gmail.com" onclick="gtag('event', 'media_inquiry', {'event_category': 'conversion', 'event_label': 'footer_media_link'});">Media Inquiries</a>
+    <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank">Get it on Amazon</a>
+    <a href="#">Newsletter</a>
+    <a href="mailto:your@email.com">Media Inquiries</a>
   </nav>
 </footer>
 
@@ -1209,46 +1023,40 @@
 
     const WEEK = 168;
     const sleepWeek = sleep * 7;
-    const commuteWeek = commute * 5;
-    const commuteYearly = Math.round(commuteWeek * 52);
+    // Commute on workdays (5 days), unless work > 40hrs suggesting weekend work — scale slightly
+    const workdays = work > 40 ? Math.min(6, 5 + Math.round((work - 40) / 8)) : 5;
+    const commuteWeek = commute * workdays;
+    const remaining = WEEK - sleepWeek - commuteWeek - work;
 
-    // Ideal baseline: 8hrs sleep/night, 0.5hrs commute/day, 40hrs work/week
-    // Anything ABOVE ideal = bandwidth tax on that dimension
-    // Sleep deficit tax: less than 8hrs = losing restoration
-    const sleepDeficit = Math.max(0, 7 - sleep) * 5;         // hours lost vs ideal sleep
-    const commuteTax = commute * 5; // hours lost above 30min/day
-    const workTax = Math.max(0, work - 40);                   // hours above 40hr week
-
-    // Total bandwidth tax score
-    const totalTax = sleepDeficit + commuteTax + workTax;
-
-    // Thresholds — strict per Mai's spec:
-    // Reserves: very little deviation from ideal (tax < 5hrs)
-    // Getting by: moderate tax (5–15hrs)
-    // Running on empty: heavy tax (>15hrs)
-    const RESERVE_LIMIT = 5;
-    const EMPTY_THRESHOLD = 15;
+    // Baseline: 35hrs free time/week = healthy (5hrs/day for meals, self-care, life)
+    // Deficit < 21hrs | Getting By 21–35 | Reserves > 35
+    const HEALTHY = 35;
+    const CRITICAL = 21;
 
     let status, color, gaugeColor, gaugeWidth, message;
 
-    if (totalTax > EMPTY_THRESHOLD) {
+    const commuteTax = commuteWeek;
+    const commuteDays = Math.round(commuteTax / commute);
+    const commuteYearly = Math.round(commuteTax * 52);
+
+    if (remaining < CRITICAL) {
       status = "You are running on empty.";
       color = "#c0392b";
       gaugeColor = "linear-gradient(to right, #e74c3c, #c0392b)";
-      gaugeWidth = Math.max(5, Math.round(33 - ((totalTax - EMPTY_THRESHOLD) / 20) * 28));
-      message = `<strong>This is not sustainable — and it is not your fault.</strong> After sleep, commuting, and work, you have roughly <strong>${Math.round(WEEK - sleepWeek - commuteWeek - work)} hours</strong> left each week for everything else: meals, family, rest, thinking, being human. You are carrying a bandwidth tax of <strong>${Math.round(totalTax)} hours a week</strong> above what is considered a healthy baseline. The commute alone is consuming <strong>${Math.round(commuteWeek)} hours a week</strong> — that is <strong>${commuteYearly.toLocaleString()} hours a year</strong>, time that no transit project will give back anytime soon. <em>Unstuck</em> was written for exactly this situation. The fix does not start with government. It starts with the policy decisions your organization makes right now.`;
-    } else if (totalTax >= RESERVE_LIMIT) {
+      gaugeWidth = Math.max(5, Math.round((remaining / HEALTHY) * 33));
+      message = `<strong>This is not sustainable — and it is not your fault.</strong> After sleep, commuting, and work, you have roughly <strong>${Math.round(remaining)} hours</strong> left each week for everything else: meals, family, rest, thinking, being human. That is less than <strong>3 hours a day</strong>. You are not underperforming. You are overtaxed. The commute alone is consuming <strong>${Math.round(commuteWeek)} hours a week</strong> — that is <strong>${Math.round(commuteYearly)} hours a year</strong>, time that no transit project will give back anytime soon. <em>Unstuck</em> was written for exactly this situation. The fix does not start with government. It starts with the policy decisions your organization makes right now.`;
+    } else if (remaining <= HEALTHY) {
       status = "You are getting by — but barely.";
       color = "#e67e22";
       gaugeColor = "linear-gradient(to right, #f39c12, #e67e22)";
-      gaugeWidth = Math.round(33 + ((EMPTY_THRESHOLD - totalTax) / (EMPTY_THRESHOLD - RESERVE_LIMIT)) * 34);
-      message = `<strong>You are functional — but fragile.</strong> You are carrying a bandwidth tax of <strong>${Math.round(totalTax)} hours a week</strong> above the healthy baseline of 8 hours of sleep, a 30-minute commute, and a 40-hour work week. Your commute is taxing you <strong>${Math.round(commuteWeek)} hours every week</strong> — <strong>${commuteYearly.toLocaleString()} hours a year</strong>. You have not hit a wall yet, but you are close enough to feel it on Friday afternoons. Many people in this zone mistake exhaustion for personal weakness. It is not. It is a systems problem. <em>Unstuck</em> makes the case that your organization has the power — and the responsibility — to change this.`;
+      gaugeWidth = Math.round(33 + ((remaining - CRITICAL) / (HEALTHY - CRITICAL)) * 34);
+      message = `<strong>You are functional — but fragile.</strong> You have about <strong>${Math.round(remaining)} hours</strong> of free time each week, which sounds like enough until you account for groceries, rest, relationships, and the basic admin of being alive. Your commute is taxing you <strong>${Math.round(commuteWeek)} hours every week</strong> — <strong>${Math.round(commuteYearly)} hours a year</strong>. You have not hit a wall yet, but you are close enough to feel it on Friday afternoons. Many people in this zone mistake exhaustion for personal weakness. It is not. It is a systems problem. <em>Unstuck</em> makes the case that your organization has the power — and the responsibility — to change this.`;
     } else {
       status = "You have bandwidth reserves.";
       color = "#586536";
       gaugeColor = "linear-gradient(to right, #B0C477, #586536)";
-      gaugeWidth = Math.min(100, Math.round(67 + ((RESERVE_LIMIT - totalTax) / RESERVE_LIMIT) * 33));
-      message = `<strong>You are one of the fortunate ones — hold onto this.</strong> Your bandwidth tax is only <strong>${Math.round(totalTax)} hours a week</strong> above the ideal baseline, which means you have genuine room to think, recover, and do work that actually matters. But your commute is still costing you <strong>${Math.round(commuteWeek)} hours a week</strong> — <strong>${commuteYearly.toLocaleString()} hours a year</strong>. For many of the people you work with, or manage, the numbers look very different. <em>Unstuck</em> is less about your own survival and more about what you can do — as a leader, a colleague, a policy-maker — for everyone around you who is running on empty.`;
+      gaugeWidth = Math.min(100, Math.round(67 + ((remaining - HEALTHY) / HEALTHY) * 33));
+      message = `<strong>You are one of the fortunate ones — hold onto this.</strong> With <strong>${Math.round(remaining)} hours</strong> of free time each week, you have enough room to think, recover, and do work that actually matters. But your commute is still costing you <strong>${Math.round(commuteWeek)} hours a week</strong> — <strong>${Math.round(commuteYearly)} hours a year</strong>. For many of the people you work with, or manage, the numbers look very different. <em>Unstuck</em> is less about your own survival and more about what you can do — as a leader, a colleague, a policy-maker — for everyone around you who is running on empty.`;
     }
 
     // Render result
@@ -1258,20 +1066,20 @@
 
     document.getElementById('result-numbers').innerHTML = `
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(totalTax)}</span>
-        <span class="result-stat-label">Bandwidth Tax hrs/week</span>
+        <span class="result-stat-num">${Math.round(remaining)}</span>
+        <span class="result-stat-label">Free hrs/week</span>
       </div>
       <div class="result-stat">
         <span class="result-stat-num">${Math.round(commuteWeek)}</span>
         <span class="result-stat-label">Commute hrs/week</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num" style="font-size:24px">${commuteYearly.toLocaleString()}</span>
+        <span class="result-stat-num" style="font-size:24px">${Math.round(commuteYearly).toLocaleString()}</span>
         <span class="result-stat-label">Commute hrs/year</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(WEEK - sleepWeek - commuteWeek - work)}</span>
-        <span class="result-stat-label">Free hrs/week</span>
+        <span class="result-stat-num">${Math.round(remaining / 7 * 10) / 10}</span>
+        <span class="result-stat-label">Free hrs/day</span>
       </div>
     `;
 
