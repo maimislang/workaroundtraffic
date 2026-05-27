@@ -142,7 +142,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
   }
 
   /* Book mockup */
@@ -800,7 +800,7 @@
 <body>
 <!-- JUNE 15 LAUNCH BANNER -->
 <div style="background:var(--lime);text-align:center;padding:12px 24px;position:sticky;top:0;z-index:1000;">
-  <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin:0;">📦 Paperback launching <strong>June 15, 2026</strong> on Amazon &nbsp;·&nbsp; <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank" style="color:var(--olive);text-decoration:underline;text-underline-offset:3px;">Get the Kindle now →</a></p>
+  <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin:0;">📦 The paperback goes live on Amazon on June 15, 2026 &nbsp;·&nbsp; <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank" style="color:var(--olive);text-decoration:underline;text-underline-offset:3px;">Get it on Kindle now →</a></p>
 </div>
 
 
@@ -845,10 +845,6 @@
     <span class="band-item">Human Resources</span><span class="band-dot">—</span>
     <span class="band-item">Future of Work</span><span class="band-dot">—</span>
   </div>
-</div>
-
-<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-
 </div>
 
 <!-- BANDWIDTH TAX CALCULATOR -->
@@ -958,19 +954,16 @@
   <p class="get-book-sub">The Kindle edition is live now on Amazon. The paperback — with nine appendices for HR leaders — launches <strong style="color:var(--lime);">June 15, 2026</strong>. Both offered free to media contacts and institutional buyers.</p>
   <div class="get-book-buttons">
     <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="btn-primary" target="_blank">Get it on Amazon</a>
-    <a href="mailto:your@email.com?subject=Media%20Copy%20Request%20—%20Unstuck" class="btn-secondary">Request a Media Copy</a>
+    <a href="mailto:maimislang@gmail.com?subject=Media%20Copy%20Request%20—%20Unstuck" class="btn-secondary">Request a Media Copy</a>
   </div>
 </section>
 
 <!-- NEWSLETTER -->
 <section class="newsletter">
-  <div class="newsletter-inner reveal">
+  <div class="newsletter-inner">
     <h3 class="newsletter-title">The <em>Unstuck</em> Newsletter</h3>
     <p class="newsletter-sub">Weekly short essays on alternative work arrangements and the systemic inefficiencies holding organizations back. No fluff.</p>
-    <div class="email-row">
-      <input type="email" class="email-input" placeholder="your@email.com">
-      <button class="email-btn">Subscribe</button>
-    </div>
+    <iframe src="https://maimislang.substack.com/embed" width="480" height="150" style="border:none;background:transparent;max-width:100%;" frameborder="0" scrolling="no"></iframe>
   </div>
 </section>
 
@@ -980,7 +973,7 @@
   <nav class="footer-links">
     <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank">Get it on Amazon</a>
     <a href="#">Newsletter</a>
-    <a href="mailto:your@email.com">Media Inquiries</a>
+    <a href="mailto:maimislang@gmail.com">Media Inquiries</a>
   </nav>
 </footer>
 
@@ -1090,13 +1083,7 @@
     resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  document.querySelector('.email-btn').addEventListener('click', () => {
-    const input = document.querySelector('.email-input');
-    if (input.value && input.value.includes('@')) {
-      input.value = '';
-      input.placeholder = '✓ You\'re on the list!';
-    }
-  });
+
 </script>
 </body>
 </html>
