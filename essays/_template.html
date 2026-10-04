@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ESSAY TEMPLATE — how to use
+  1. Copy this file to essays/<your-slug>.html  (slug = lowercase words joined by hyphens, usually the question)
+  2. Replace every {{TOKEN}} below.
+  3. Write the body inside <!-- BODY START --> ... <!-- BODY END -->
+  4. Add a matching card to essays/index.html (newest first) and a <url> entry to /sitemap.xml
+  Tokens:
+    {{TITLE}}      -> <title> text (question + " | Unstuck")
+    {{SLUG}}       -> the file name, e.g. why-is-daily-office-attendance-still-company-policy.html
+    {{H1}}         -> the question headline
+    {{DEK}}        -> one-sentence summary / description
+    {{DATE_HUMAN}} -> e.g. October 4, 2026
+    {{DATE_ISO}}   -> e.g. 2026-10-04
+-->
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F6GE5M65Z4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-F6GE5M65Z4');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{TITLE}}</title>
+
+<meta name="description" content="{{DEK}}">
+<meta name="author" content="Mai G. Mislang">
+<!-- Template itself must never be indexed. For a REAL essay, change this to: index, follow -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#586536">
+<link rel="canonical" href="https://workaroundtraffic.com/essays/{{SLUG}}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23586536'/><circle cx='50' cy='50' r='26' fill='%23F2C53D'/></svg>">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{H1}}">
+<meta property="og:description" content="{{DEK}}">
+<meta property="og:url" content="https://workaroundtraffic.com/essays/{{SLUG}}">
+<meta property="og:site_name" content="Unstuck by Mai G. Mislang">
+<meta property="og:locale" content="en_PH">
+<meta property="og:image" content="https://workaroundtraffic.com/cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://workaroundtraffic.com/cover.jpg">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+
+<!-- Article structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{H1}}",
+  "description": "{{DEK}}",
+  "author": { "@type": "Person", "name": "Mai G. Mislang", "url": "https://workaroundtraffic.com" },
+  "publisher": { "@type": "Organization", "name": "Unstuck by Mai G. Mislang", "url": "https://workaroundtraffic.com" },
+  "datePublished": "{{DATE_ISO}}",
+  "dateModified": "{{DATE_ISO}}",
+  "image": "https://workaroundtraffic.com/cover.jpg",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://workaroundtraffic.com/essays/{{SLUG}}" }
+}
+</script>
+</head>
+<body>
+
+<!-- SITE NAV -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-brand">Unstuck</a>
+  <div class="nav-links">
+    <a href="../index.html">The Book</a>
+    <a href="../index.html#calculator">Calculator</a>
+    <a href="../program.html">For Employers</a>
+    <a href="index.html">Essays</a>
+    <a href="https://www.amazon.com/dp/B0GYHN6D1D" class="nav-cta" target="_blank" rel="noopener">Get the Book</a>
+  </div>
+</nav>
+
+<article class="essay-article">
+  <h1>{{H1}}</h1>
+  <div class="essay-meta">By Mai G. Mislang · {{DATE_HUMAN}}</div>
+
+  <!-- BODY START -->
+  <p>{{DEK}}</p>
+
+  <h2>Section one</h2>
+  <p>Write here.</p>
+
+  <!-- Optional FAQ block for the essay. Keep it in sync with a FAQPage JSON-LD script if you add one. -->
+  <!-- BODY END -->
+
+  <!-- Closing call to action (required on every essay) -->
+  <div class="essay-cta">
+    <h3>Ready to put this into practice?</h3>
+    <p>The Unstuck Philippines Flexible Work Pilot helps your organization design, cost, and run a real flexible-work pilot in 90 days.</p>
+    <a href="../program.html" class="btn-yellow">Join the Waitlist →</a>
+  </div>
+</article>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">UNSTUCK</div>
+  <nav class="footer-links">
+    <a href="../index.html">The Book</a>
+    <a href="../program.html">For Employers</a>
+    <a href="index.html">Essays</a>
+    <a href="https://www.amazon.com/dp/B0GYHN6D1D" target="_blank" rel="noopener">Get it on Amazon</a>
+    <a href="mailto:hello@workaroundtraffic.com">Media Inquiries</a>
+  </nav>
+</footer>
+
+</body>
+</html>

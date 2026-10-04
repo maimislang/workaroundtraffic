@@ -1,36 +1,27 @@
-# Unstuck by Mai G. Mislang
-# https://workaroundtraffic.com
+# Unstuck — workaroundtraffic.com
 
-## About This Site
-This is the official landing page for *Unstuck: How To Work Around Traffic When Government Won't Really Help* by Mai G. Mislang.
+> The home of *Unstuck: How To Work Around Traffic When Government Won't Really Help* by Mai G. Mislang, and the Unstuck Philippines Flexible Work Pilot for employers. The core argument: Metro Manila's traffic crisis is not only a government failure — it is a corporate policy failure, and organizations can reduce the human cost of the commute right now through alternative work arrangements.
 
-## About the Book
-- **Full title:** Unstuck: How To Work Around Traffic When Government Won't Really Help
+## The book
+- **Title:** Unstuck: How To Work Around Traffic When Government Won't Really Help
 - **Author:** Mai G. Mislang
-- **Published:** 2026
-- **Available on:** Amazon Kindle and paperback
-- **Amazon link:** https://www.amazon.com/dp/B0GYHN6D1D
+- **For:** HR and people leaders, executives, and knowledge workers in congested cities
+- **Thesis:** The daily commute imposes a "bandwidth tax" — the time and cognitive energy lost before and after work. The fix does not start with government; it starts with the policy decisions organizations make about where and how people work.
+- **Buy:** Kindle on Amazon — https://www.amazon.com/dp/B0GYHN6D1D (paperback includes nine appendices for HR leaders)
 
-## Core Argument
-Metro Manila's traffic crisis is not primarily a government failure — it is a corporate policy failure. Organizations have the power and responsibility to implement alternative work arrangements (AWAs) right now, without waiting for transit infrastructure.
+## The free tool
+- **Bandwidth Tax Calculator** (on the homepage): estimates what a person's commute costs in free hours per week and per year. Free, no sign-up.
 
-## Who It's For
-- HR leaders and People Operations executives
-- C-suite and senior management in the Philippines and other congested cities
-- Knowledge workers and managers looking to advocate for policy change
-- Organizations in Metro Manila and other traffic-congested urban centers globally
+## For employers — the Flexible Work Pilot
+- **Page:** https://workaroundtraffic.com/program.html
+- **What it is:** A guided program that helps Philippine employers design, cost, and run a real flexible-work pilot in 90 days.
+- **Who it is for:** HR and people leaders, CEOs and executives, sustainability teams.
+- **Participants leave with:** a role-by-role presence map, a cost-of-commute business case, a 90-day pilot plan, and a policy template aligned with the Telecommuting Act (RA 11165).
+- **Formats:** Founding Cohort (three full-day sessions, 10 seats) and In-house Workshop (delivered to a single company). Pricing to be announced; join the waitlist to be told first.
 
-## Key Concepts
-- Bandwidth tax: the cognitive and physical cost of commuting that depletes worker productivity
-- Alternative work arrangements (AWAs): flexible schedules, remote work, compressed workweeks
-- The 9-to-5 as a historical relic unsuited to modern congested cities
-- Corporate policy as the lever for change, not government transit timelines
-
-## Author
-Mai G. Mislang is a Manila-based author, educator, and content creator. She also runs Rise Artisanal, a sourdough bakery, and leads communications work in the nonprofit sector.
-
-## Newsletter
-The Bandwidth Conservator — weekly essays on alternative work arrangements and systemic inefficiencies. Subscribe at: https://maimislang.substack.com
+## Essays
+- **Index:** https://workaroundtraffic.com/essays/
+- "Why is daily office attendance still company policy in the Philippines?" — https://workaroundtraffic.com/essays/why-is-daily-office-attendance-still-company-policy.html
 
 ## Contact
-Media inquiries: maimislang@gmail.com
+- Media and general inquiries: hello@workaroundtraffic.com
