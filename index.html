@@ -454,45 +454,50 @@
     const commute = parseFloat(sliders.commute.value);
     const work = parseFloat(sliders.work.value);
 
-    const SLEEP_TARGET = 7;   // healthy minimum sleep per night (hours)
-    const WORK_TARGET = 40;   // healthy maximum work per week (hours)
+    const SLEEP_TARGET = 7;      // healthy sleep per night (hours)
+    const WORK_TARGET = 40;      // healthy work per week (hours) = 8h x 5 days
+    const COMMUTE_TARGET = 0.5;  // healthy commute per day (hours) = 30-min round trip
+    const WORKDAYS = 5;          // conservative 5-day work week
+    const WORKDAYS_YEAR = 235;   // working days per year (after weekends, holidays, leave)
 
-    // Commute lands on workdays (5), with a little weekend creep when hours run high
-    const workdays = work > WORK_TARGET ? Math.min(6, 5 + Math.round((work - WORK_TARGET) / 8)) : 5;
-    const commuteWeek = commute * workdays;
-    const commuteYearly = Math.round(commuteWeek * 52);
+    // Everything is measured as a deficit BEYOND the healthy baseline
+    const sleepDebtWk = Math.max(0, SLEEP_TARGET - sleep) * WORKDAYS;        // lost sleep per week
+    const overworkWk  = Math.max(0, work - WORK_TARGET);                     // hours over 40 per week
+    const commuteExcessDay  = Math.max(0, commute - COMMUTE_TARGET);         // extra commute per day
+    const commuteExcessWk   = commuteExcessDay * WORKDAYS;                   // extra commute per week
+    const commuteExcessYear = Math.round(commuteExcessDay * WORKDAYS_YEAR);  // extra commute per year
+    const totalDeficit = sleepDebtWk + overworkWk + commuteExcessWk;
 
-    // Deficits measured against the healthy baseline (7h sleep, 40h work)
-    const sleepDebtWk = Math.max(0, SLEEP_TARGET - sleep) * 7;  // lost sleep per week
-    const overworkWk  = Math.max(0, work - WORK_TARGET);        // hours over 40 per week
-    const totalTax = sleepDebtWk + overworkWk + commuteWeek;
-    const inDeficit = (sleep < SLEEP_TARGET) || (work > WORK_TARGET);
+    const sleepOrWorkDeficit = (sleep < SLEEP_TARGET) || (work > WORK_TARGET);
+    const fullyHealthy = (sleep >= SLEEP_TARGET) && (work <= WORK_TARGET) && (commute <= COMMUTE_TARGET);
 
     let status, color, gaugeColor, gaugeWidth, message;
-    const hrs = (n) => (Math.round(n) === 1 ? '1 hour' : Math.round(n) + ' hours');
-    const commuteLine = `the commute takes <strong>${Math.round(commuteWeek)} hours a week — ${Math.round(commuteYearly).toLocaleString()} hours a year</strong>`;
+    const fmt = (n) => { const r = Math.round(n * 10) / 10; return Number.isInteger(r) ? String(r) : r.toFixed(1); };
+    const hrs = (n) => { const r = fmt(n); return (r === '1' ? '1 hour' : r + ' hours'); };
+    const commuteLine = `the commute costs you <strong>${hrs(commuteExcessWk)} a week — ${commuteExcessYear.toLocaleString()} hours a year</strong> beyond a 30-minute trip`;
 
-    if (inDeficit) {
+    if (sleepOrWorkDeficit || commuteExcessWk > 2.5) {
       status = "You are running a deficit.";
       color = "#c0392b";
       gaugeColor = "linear-gradient(to right, #e74c3c, #c0392b)";
-      gaugeWidth = Math.max(6, 32 - Math.round(totalTax / 2));
+      gaugeWidth = Math.max(6, 32 - Math.round(totalDeficit / 2));
       const causes = [];
       if (sleepDebtWk > 0) causes.push(`sleeping only <strong>${sleep} hours</strong> a night — <strong>${hrs(sleepDebtWk)}</strong> of lost sleep every week`);
       if (overworkWk > 0) causes.push(`working <strong>${Math.round(work)} hours</strong> a week — <strong>${hrs(overworkWk)}</strong> beyond a healthy 40`);
-      message = `<strong>You are running a deficit — and it is not a willpower problem.</strong> A sustainable week starts with about 7 hours of sleep a night and 40 hours of work. You are ${causes.join(', and ')}. On top of that, ${commuteLine} — time no transit project will give back soon. You are not underperforming; you are overtaxed. <em>Unstuck</em> was written for exactly this. The fix does not start with government. It starts with the policy decisions your organization makes right now.`;
-    } else if (commuteWeek >= 10) {
+      const lead = causes.length ? `You are ${causes.join(', and ')}. On top of that, ${commuteLine}.` : `Your sleep and hours are fine, but ${commuteLine}.`;
+      message = `<strong>You are running a deficit — and it is not a willpower problem.</strong> A healthy week is simple: 8 hours of work across 5 days, 7 hours of sleep a night, and a 30-minute commute. ${lead} That is time no transit project will give back soon. Most people stop noticing because they are so used to it. You are not underperforming; you are overtaxed. <em>Unstuck</em> was written for exactly this. The fix does not start with government. It starts with the policy decisions your organization makes right now.`;
+    } else if (!fullyHealthy) {
       status = "You are getting by — but the commute is the threat.";
       color = "#e67e22";
       gaugeColor = "linear-gradient(to right, #f39c12, #e67e22)";
-      gaugeWidth = Math.max(40, Math.min(66, 70 - Math.round(commuteWeek)));
+      gaugeWidth = Math.max(40, Math.min(66, 64 - Math.round(commuteExcessWk * 4)));
       message = `<strong>Your sleep and hours sit in a healthy range — that is the hard part done.</strong> But ${commuteLine} of the time you need to recover and do your best work. That margin is thinner than it feels, and it is the first thing to collapse on a bad week. <em>Unstuck</em> makes the case that your organization can give those hours back.`;
     } else {
-      status = "You have real bandwidth reserves.";
+      status = "You have a healthy, sustainable week.";
       color = "#586536";
       gaugeColor = "linear-gradient(to right, #B0C477, #586536)";
-      gaugeWidth = Math.max(72, Math.min(100, 100 - Math.round(commuteWeek)));
-      message = `<strong>You have real bandwidth reserves — hold onto this.</strong> You sleep enough, your hours are sane, and your commute is light. That combination is rare. Even so, ${commuteLine}, and for many of the people you work with or manage the numbers look far worse. <em>Unstuck</em> is less about your own survival and more about what you can do for everyone around you who is running on empty.`;
+      gaugeWidth = 100;
+      message = `<strong>You have a genuinely sustainable week — hold onto it.</strong> Eight hours of work across five days, seven hours of sleep, and a short commute is exactly the healthy baseline — and it is rare. For many of the people you work with or manage, the numbers look far worse. <em>Unstuck</em> is less about your own survival and more about what you can do for everyone around you who is running on empty.`;
     }
 
     // Render result
@@ -502,20 +507,20 @@
 
     document.getElementById('result-numbers').innerHTML = `
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(sleepDebtWk)}</span>
+        <span class="result-stat-num">${fmt(sleepDebtWk)}</span>
         <span class="result-stat-label">Sleep debt hrs/week</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(overworkWk)}</span>
+        <span class="result-stat-num">${fmt(overworkWk)}</span>
         <span class="result-stat-label">Overwork hrs/week</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num">${Math.round(commuteWeek)}</span>
-        <span class="result-stat-label">Commute hrs/week</span>
+        <span class="result-stat-num">${fmt(commuteExcessWk)}</span>
+        <span class="result-stat-label">Extra commute hrs/week</span>
       </div>
       <div class="result-stat">
-        <span class="result-stat-num" style="font-size:24px">${Math.round(commuteYearly).toLocaleString()}</span>
-        <span class="result-stat-label">Commute hrs/year</span>
+        <span class="result-stat-num" style="font-size:24px">${commuteExcessYear.toLocaleString()}</span>
+        <span class="result-stat-label">Extra commute hrs/year</span>
       </div>
     `;
 
